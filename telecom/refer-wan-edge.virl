@@ -1,0 +1,2050 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <node name="csr1000v-1" type="SIMPLE" subtype="CSR1000v" location="243,353">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:09 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-111
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9NXSFPHUUS3
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr1000v-2" type="SIMPLE" subtype="CSR1000v" location="343,351">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:10 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-110
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 96B5GRC2M8T
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr1000v-3" type="SIMPLE" subtype="CSR1000v" location="250,15">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:11 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-109
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9IRMK1KUKI5
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr1000v-4" type="SIMPLE" subtype="CSR1000v" location="353,9">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:11 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-114
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 99UUA5D1UGB
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr1000v-5" type="SIMPLE" subtype="CSR1000v" location="602,132">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:12 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-113
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9JV1K8OHDIV
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr1000v-6" type="SIMPLE" subtype="CSR1000v" location="607,249">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:11 UTC Wed May 18 2016
+!
+version 15.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname host-10-255-0-112
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9K6J34J2LON
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet1
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="249,264">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:03:09 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64500:1
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1000
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.253.1 255.255.255.255
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.67.33 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.254.1 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/3
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.254.5 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 10 vrf VRF-CORE-DCI
+ router-id 10.192.10.1
+ no auto-cost
+ passive-interface default
+ no passive-interface GigabitEthernet0/1.208
+ no passive-interface GigabitEthernet0/2.208
+ no passive-interface GigabitEthernet0/3.208
+!
+router bgp 64500
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ timers bgp 10 30
+ !
+ address-family ipv4 vrf VRF-CORE-DCI
+  bgp router-id 10.192.253.1
+  network 10.192.0.0 mask 255.255.0.0
+  neighbor 10.192.67.34 remote-as 64700
+  neighbor 10.192.67.34 activate
+  neighbor 10.192.253.2 remote-as 64500
+  neighbor 10.192.253.2 update-source Loopback1000
+  neighbor 10.192.253.2 activate
+  maximum-paths ibgp 4
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf VRF-CORE-DCI 10.192.0.0 255.255.0.0 Null0
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="355,266">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:09:53 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-02
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64500:1
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1000
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.253.2 255.255.255.255
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.208
+ ip ospf network point-to-point
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.254.2 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/3
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.254.6 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 10 vrf VRF-CORE-DCI
+ router-id 10.192.10.2
+ no auto-cost
+ passive-interface default
+ no passive-interface GigabitEthernet0/2.208
+ no passive-interface GigabitEthernet0/3.208
+!
+router bgp 64500
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ timers bgp 10 30
+ !
+ address-family ipv4 vrf VRF-CORE-DCI
+  bgp router-id 10.192.253.2
+  network 10.192.0.0 mask 255.255.0.0
+  neighbor 10.192.253.1 remote-as 64500
+  neighbor 10.192.253.1 update-source Loopback1000
+  neighbor 10.192.253.1 activate
+  maximum-paths ibgp 4
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf VRF-CORE-DCI 10.192.0.0 255.255.0.0 Null0
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="262,99">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:04:27 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-03
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64700:3
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1000
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.131.253.1 255.255.255.255
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.192.67.34 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.131.254.1 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/3
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3.208
+ encapsulation dot1Q 208
+ vrf forwarding VRF-CORE-DCI
+ ip address 10.131.254.5 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf 10 area 10
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 10 vrf VRF-CORE-DCI
+ router-id 10.131.10.3
+ no auto-cost
+ passive-interface default
+ no passive-interface GigabitEthernet0/1.208
+ no passive-interface GigabitEthernet0/2.208
+ no passive-interface GigabitEthernet0/3.208
+!
+router bgp 64700
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ timers bgp 10 30
+ !
+ address-family ipv4 vrf VRF-CORE-DCI
+  bgp router-id 10.131.253.1
+  network 10.131.0.0 mask 255.255.0.0
+  neighbor 10.192.67.33 remote-as 64500
+  neighbor 10.192.67.33 activate
+  maximum-paths ibgp 4
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf VRF-CORE-DCI 10.131.0.0 255.255.0.0 Null0
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="362,97">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:14:01 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-04
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64500:3
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="515,140">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:06:42 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-05
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64500:3
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="520,251">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 23:07:11 UTC Wed May 18 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 6K8-06
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition VRF-CORE-DCI
+ rd 64500:3
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.208
+ encapsulation dot1Q 208
+ ip address 10.192.67.33 255.255.255.252
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet0/4"/>
+        <interface id="4" name="GigabitEthernet0/5"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[1]" src="/virl:topology/virl:node[7]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[1]" src="/virl:topology/virl:node[8]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[1]" src="/virl:topology/virl:node[11]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[2]" src="/virl:topology/virl:node[9]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[3]" src="/virl:topology/virl:node[9]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[2]" src="/virl:topology/virl:node[7]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[3]" src="/virl:topology/virl:node[7]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[2]" src="/virl:topology/virl:node[11]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[3]" src="/virl:topology/virl:node[11]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[7]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[7]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[2]" src="/virl:topology/virl:node[8]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[8]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[4]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[4]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[5]" src="/virl:topology/virl:node[4]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[5]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[4]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[4]" src="/virl:topology/virl:node[5]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[5]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[5]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+</topology>
