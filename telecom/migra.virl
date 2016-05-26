@@ -4,7 +4,7 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:51 UTC Wed May 25 2016
+! Last configuration change at 00:05:13 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -12,7 +12,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname Switch
+hostname N5KLX-01
 !
 boot-start-marker
 boot-end-marker
@@ -28,6 +28,7 @@ no aaa new-model
 !
 !
 !
+no ip domain-lookup
 ip cef
 no ipv6 cef
 !
@@ -114,6 +115,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -127,7 +129,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:50 UTC Wed May 25 2016
+! Last configuration change at 00:05:15 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -237,6 +239,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -250,7 +253,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:57 UTC Wed May 25 2016
+! Last configuration change at 00:05:14 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -352,6 +355,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -363,7 +367,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:45:01 UTC Wed May 25 2016
+! Last configuration change at 00:05:16 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -465,6 +469,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -476,7 +481,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:55 UTC Wed May 25 2016
+! Last configuration change at 00:05:12 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -582,6 +587,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -594,7 +600,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:43 UTC Wed May 25 2016
+! Last configuration change at 00:05:09 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -704,6 +710,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -717,7 +724,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:55 UTC Wed May 25 2016
+! Last configuration change at 00:05:14 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -819,6 +826,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -830,7 +838,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:49 UTC Wed May 25 2016
+! Last configuration change at 00:05:09 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -932,6 +940,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -943,7 +952,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:30 UTC Wed May 25 2016
+! Last configuration change at 00:05:00 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1053,6 +1062,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -1066,7 +1076,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:37 UTC Wed May 25 2016
+! Last configuration change at 00:04:55 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1172,6 +1182,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -1184,7 +1195,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:49 UTC Wed May 25 2016
+! Last configuration change at 00:05:02 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1286,6 +1297,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -1297,7 +1309,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:48 UTC Wed May 25 2016
+! Last configuration change at 00:05:03 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1399,6 +1411,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -1410,7 +1423,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:45:14 UTC Wed May 25 2016
+! Last configuration change at 00:04:48 UTC Thu May 26 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1471,7 +1484,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- no ip address
+ ip address 10.255.1.31 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -1579,7 +1592,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:45:18 UTC Wed May 25 2016
+! Last configuration change at 00:04:49 UTC Thu May 26 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1640,7 +1653,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- no ip address
+ ip address 10.255.1.30 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -1748,7 +1761,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:58 UTC Wed May 25 2016
+! Last configuration change at 00:05:09 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1850,6 +1863,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -1861,7 +1875,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 23:45:11 UTC Wed May 25 2016
+! Last configuration change at 00:05:24 UTC Thu May 26 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1963,6 +1977,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
