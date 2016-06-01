@@ -1301,6 +1301,7 @@ end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
     </node>
     <node name="SW-N5K-PT02" type="SIMPLE" subtype="IOSvL2" location="221,123">
         <extensions>
@@ -2695,6 +2696,8 @@ end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
     </node>
     <node name="iosvl2-14" type="SIMPLE" subtype="IOSvL2" location="672,367">
         <extensions>
@@ -2809,6 +2812,7 @@ end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
     </node>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
     <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
@@ -2835,4 +2839,6 @@ end</entry>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[4]" src="/virl:topology/virl:node[14]/virl:interface[5]"/>
     <connection dst="/virl:topology/virl:node[13]/virl:interface[6]" src="/virl:topology/virl:node[6]/virl:interface[4]"/>
     <connection dst="/virl:topology/virl:node[9]/virl:interface[4]" src="/virl:topology/virl:node[14]/virl:interface[6]"/>
+    <connection dst="/virl:topology/virl:node[16]/virl:interface[3]" src="/virl:topology/virl:node[15]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[3]" src="/virl:topology/virl:node[15]/virl:interface[4]"/>
 </topology>
