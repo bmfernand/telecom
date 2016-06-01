@@ -1078,7 +1078,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:08:15 UTC Wed Jun 1 2016
+! Last configuration change at 13:18:11 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1192,7 +1192,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:07:24 UTC Wed Jun 1 2016
+! Last configuration change at 13:18:34 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1248,6 +1248,10 @@ interface GigabitEthernet0/1
  negotiation auto
 !
 interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
  media-type rj45
  negotiation auto
 !
