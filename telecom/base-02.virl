@@ -3,6 +3,555 @@
     <node name="SW-N5K-LX01" type="SIMPLE" subtype="IOSv" location="588,421">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:01:58 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW-N5K-LX01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition CORE_DCI
+ rd 10:10
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition INTERCONN
+ rd 20:20
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition RTCS-OVRL-VXLAN
+ rd 30:30
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description L2-link-to-iov-L2-LX
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+!
+interface GigabitEthernet0/1.36
+ encapsulation dot1Q 36
+!
+interface GigabitEthernet0/1.45
+ encapsulation dot1Q 45
+!
+interface GigabitEthernet0/1.46
+ encapsulation dot1Q 46
+!
+interface GigabitEthernet0/1.50
+ encapsulation dot1Q 50
+!
+interface GigabitEthernet0/1.52
+ encapsulation dot1Q 52
+!
+interface GigabitEthernet0/1.61
+ encapsulation dot1Q 61
+!
+interface GigabitEthernet0/1.74
+ encapsulation dot1Q 74
+!
+interface GigabitEthernet0/1.75
+ encapsulation dot1Q 75
+!
+interface GigabitEthernet0/1.76
+ encapsulation dot1Q 76
+!
+interface GigabitEthernet0/1.77
+ encapsulation dot1Q 77
+!
+interface GigabitEthernet0/1.91
+ encapsulation dot1Q 91
+!
+interface GigabitEthernet0/1.102
+ encapsulation dot1Q 102
+!
+interface GigabitEthernet0/1.103
+ encapsulation dot1Q 103
+!
+interface GigabitEthernet0/1.104
+ encapsulation dot1Q 104
+!
+interface GigabitEthernet0/1.107
+ encapsulation dot1Q 107
+!
+interface GigabitEthernet0/1.110
+ encapsulation dot1Q 110
+!
+interface GigabitEthernet0/1.111
+ encapsulation dot1Q 111
+!
+interface GigabitEthernet0/1.120
+ encapsulation dot1Q 120
+!
+interface GigabitEthernet0/1.121
+ encapsulation dot1Q 121
+!
+interface GigabitEthernet0/1.122
+ encapsulation dot1Q 122
+!
+interface GigabitEthernet0/1.125
+ encapsulation dot1Q 125
+!
+interface GigabitEthernet0/1.150
+ encapsulation dot1Q 150
+!
+interface GigabitEthernet0/1.160
+ encapsulation dot1Q 160
+!
+interface GigabitEthernet0/1.170
+ encapsulation dot1Q 170
+!
+interface GigabitEthernet0/1.199
+ encapsulation dot1Q 199
+!
+interface GigabitEthernet0/1.200
+ encapsulation dot1Q 200
+!
+interface GigabitEthernet0/1.204
+ encapsulation dot1Q 204
+!
+interface GigabitEthernet0/1.209
+ encapsulation dot1Q 209
+!
+interface GigabitEthernet0/1.210
+ encapsulation dot1Q 210
+!
+interface GigabitEthernet0/1.250
+ encapsulation dot1Q 250
+!
+interface GigabitEthernet0/1.260
+ encapsulation dot1Q 260
+!
+interface GigabitEthernet0/1.270
+ encapsulation dot1Q 270
+!
+interface GigabitEthernet0/1.279
+ encapsulation dot1Q 279
+!
+interface GigabitEthernet0/1.299
+ encapsulation dot1Q 299
+!
+interface GigabitEthernet0/1.300
+ encapsulation dot1Q 300
+!
+interface GigabitEthernet0/1.350
+ encapsulation dot1Q 350
+!
+interface GigabitEthernet0/1.360
+ encapsulation dot1Q 360
+!
+interface GigabitEthernet0/1.370
+ encapsulation dot1Q 370
+!
+interface GigabitEthernet0/1.400
+ encapsulation dot1Q 400
+!
+interface GigabitEthernet0/1.500
+ encapsulation dot1Q 500
+!
+interface GigabitEthernet0/1.501
+ encapsulation dot1Q 501
+!
+interface GigabitEthernet0/1.510
+ encapsulation dot1Q 510
+!
+interface GigabitEthernet0/1.520
+ encapsulation dot1Q 520
+!
+interface GigabitEthernet0/1.550
+ encapsulation dot1Q 550
+!
+interface GigabitEthernet0/1.580
+ encapsulation dot1Q 580
+!
+interface GigabitEthernet0/1.590
+ encapsulation dot1Q 590
+!
+interface GigabitEthernet0/1.599
+ encapsulation dot1Q 599
+!
+interface GigabitEthernet0/1.600
+ encapsulation dot1Q 600
+!
+interface GigabitEthernet0/1.666
+ encapsulation dot1Q 666
+!
+interface GigabitEthernet0/1.780
+ encapsulation dot1Q 780
+!
+interface GigabitEthernet0/1.781
+ encapsulation dot1Q 781
+!
+interface GigabitEthernet0/1.800
+ encapsulation dot1Q 800
+!
+interface GigabitEthernet0/1.810
+ encapsulation dot1Q 810
+!
+interface GigabitEthernet0/1.811
+ encapsulation dot1Q 811
+!
+interface GigabitEthernet0/1.812
+ encapsulation dot1Q 812
+!
+interface GigabitEthernet0/1.813
+ encapsulation dot1Q 813
+!
+interface GigabitEthernet0/1.850
+ encapsulation dot1Q 850
+!
+interface GigabitEthernet0/1.851
+ encapsulation dot1Q 851
+!
+interface GigabitEthernet0/1.852
+ encapsulation dot1Q 852
+!
+interface GigabitEthernet0/1.853
+ encapsulation dot1Q 853
+!
+interface GigabitEthernet0/1.854
+ encapsulation dot1Q 854
+!
+interface GigabitEthernet0/1.856
+ encapsulation dot1Q 856
+!
+interface GigabitEthernet0/1.858
+ encapsulation dot1Q 858
+!
+interface GigabitEthernet0/1.859
+ encapsulation dot1Q 859
+!
+interface GigabitEthernet0/1.860
+ encapsulation dot1Q 860
+!
+interface GigabitEthernet0/1.861
+ encapsulation dot1Q 861
+!
+interface GigabitEthernet0/1.862
+ encapsulation dot1Q 862
+!
+interface GigabitEthernet0/1.863
+ encapsulation dot1Q 863
+!
+interface GigabitEthernet0/1.864
+ encapsulation dot1Q 864
+!
+interface GigabitEthernet0/1.865
+ encapsulation dot1Q 865
+!
+interface GigabitEthernet0/1.866
+ encapsulation dot1Q 866
+!
+interface GigabitEthernet0/1.867
+ encapsulation dot1Q 867
+!
+interface GigabitEthernet0/1.886
+ encapsulation dot1Q 886
+!
+interface GigabitEthernet0/1.887
+ encapsulation dot1Q 887
+!
+interface GigabitEthernet0/1.888
+ encapsulation dot1Q 888
+!
+interface GigabitEthernet0/1.890
+ encapsulation dot1Q 890
+!
+interface GigabitEthernet0/1.905
+ encapsulation dot1Q 905
+!
+interface GigabitEthernet0/1.910
+ encapsulation dot1Q 910
+!
+interface GigabitEthernet0/1.920
+ encapsulation dot1Q 920
+!
+interface GigabitEthernet0/1.931
+ encapsulation dot1Q 931
+!
+interface GigabitEthernet0/1.932
+ encapsulation dot1Q 932
+!
+interface GigabitEthernet0/1.933
+ encapsulation dot1Q 933
+!
+interface GigabitEthernet0/1.934
+ encapsulation dot1Q 934
+!
+interface GigabitEthernet0/1.940
+ encapsulation dot1Q 940
+!
+interface GigabitEthernet0/1.961
+ encapsulation dot1Q 961
+!
+interface GigabitEthernet0/1.969
+ encapsulation dot1Q 969
+!
+interface GigabitEthernet0/1.980
+ encapsulation dot1Q 980
+!
+interface GigabitEthernet0/1.1000
+ encapsulation dot1Q 1000
+!
+interface GigabitEthernet0/1.1060
+ encapsulation dot1Q 1060
+!
+interface GigabitEthernet0/1.1510
+ encapsulation dot1Q 1510
+!
+interface GigabitEthernet0/1.1950
+ encapsulation dot1Q 1950
+!
+interface GigabitEthernet0/1.1960
+ encapsulation dot1Q 1960
+!
+interface GigabitEthernet0/1.1970
+ encapsulation dot1Q 1970
+!
+interface GigabitEthernet0/1.1999
+ encapsulation dot1Q 1999
+!
+interface GigabitEthernet0/1.3000
+ encapsulation dot1Q 3000
+!
+interface GigabitEthernet0/1.3010
+ encapsulation dot1Q 3010
+!
+interface GigabitEthernet0/1.3012
+ encapsulation dot1Q 3012
+!
+interface GigabitEthernet0/1.3040
+ encapsulation dot1Q 3040
+!
+interface GigabitEthernet0/1.3041
+ encapsulation dot1Q 3041
+!
+interface GigabitEthernet0/1.3042
+ encapsulation dot1Q 3042
+!
+interface GigabitEthernet0/1.3043
+ encapsulation dot1Q 3043
+!
+interface GigabitEthernet0/1.3080
+ encapsulation dot1Q 3080
+!
+interface GigabitEthernet0/1.3081
+ encapsulation dot1Q 3081
+!
+interface GigabitEthernet0/1.3099
+ encapsulation dot1Q 3099
+!
+interface GigabitEthernet0/1.3100
+ encapsulation dot1Q 3100
+!
+interface GigabitEthernet0/1.3101
+ encapsulation dot1Q 3101
+!
+interface GigabitEthernet0/1.3111
+ encapsulation dot1Q 3111
+!
+interface GigabitEthernet0/1.3112
+ encapsulation dot1Q 3112
+!
+interface GigabitEthernet0/1.3192
+ encapsulation dot1Q 3192
+!
+interface GigabitEthernet0/1.3201
+ encapsulation dot1Q 3201
+!
+interface GigabitEthernet0/1.3202
+ encapsulation dot1Q 3202
+!
+interface GigabitEthernet0/1.3209
+ encapsulation dot1Q 3209
+!
+interface GigabitEthernet0/1.3300
+ encapsulation dot1Q 3300
+!
+interface GigabitEthernet0/1.3312
+ encapsulation dot1Q 3312
+!
+interface GigabitEthernet0/1.3313
+ encapsulation dot1Q 3313
+!
+interface GigabitEthernet0/1.3314
+ encapsulation dot1Q 3314
+!
+interface GigabitEthernet0/1.3501
+ encapsulation dot1Q 3501
+!
+interface GigabitEthernet0/1.3502
+ encapsulation dot1Q 3502
+!
+interface GigabitEthernet0/1.3503
+ encapsulation dot1Q 3503
+!
+interface GigabitEthernet0/1.3504
+ encapsulation dot1Q 3504
+!
+interface GigabitEthernet0/1.3505
+ encapsulation dot1Q 3505
+!
+interface GigabitEthernet0/1.3506
+ encapsulation dot1Q 3506
+!
+interface GigabitEthernet0/1.3507
+ encapsulation dot1Q 3507
+!
+interface GigabitEthernet0/1.3508
+ encapsulation dot1Q 3508
+!
+interface GigabitEthernet0/1.3509
+ encapsulation dot1Q 3509
+!
+interface GigabitEthernet0/1.3510
+ encapsulation dot1Q 3510
+!
+interface GigabitEthernet0/1.3901
+ encapsulation dot1Q 3901
+!
+interface GigabitEthernet0/1.3902
+ encapsulation dot1Q 3902
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -12,6 +561,555 @@
     <node name="SW-N5K-LX02" type="SIMPLE" subtype="IOSv" location="772,428">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:01:45 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW-N5K-LX02
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition CORE_DCI
+ rd 10:10
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition INTERCONN
+ rd 20:20
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition RTCS-OVRL-VXLAN
+ rd 30:30
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description L2-link-to-iov-L2-LX
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+!
+interface GigabitEthernet0/1.36
+ encapsulation dot1Q 36
+!
+interface GigabitEthernet0/1.45
+ encapsulation dot1Q 45
+!
+interface GigabitEthernet0/1.46
+ encapsulation dot1Q 46
+!
+interface GigabitEthernet0/1.50
+ encapsulation dot1Q 50
+!
+interface GigabitEthernet0/1.52
+ encapsulation dot1Q 52
+!
+interface GigabitEthernet0/1.61
+ encapsulation dot1Q 61
+!
+interface GigabitEthernet0/1.74
+ encapsulation dot1Q 74
+!
+interface GigabitEthernet0/1.75
+ encapsulation dot1Q 75
+!
+interface GigabitEthernet0/1.76
+ encapsulation dot1Q 76
+!
+interface GigabitEthernet0/1.77
+ encapsulation dot1Q 77
+!
+interface GigabitEthernet0/1.91
+ encapsulation dot1Q 91
+!
+interface GigabitEthernet0/1.102
+ encapsulation dot1Q 102
+!
+interface GigabitEthernet0/1.103
+ encapsulation dot1Q 103
+!
+interface GigabitEthernet0/1.104
+ encapsulation dot1Q 104
+!
+interface GigabitEthernet0/1.107
+ encapsulation dot1Q 107
+!
+interface GigabitEthernet0/1.110
+ encapsulation dot1Q 110
+!
+interface GigabitEthernet0/1.111
+ encapsulation dot1Q 111
+!
+interface GigabitEthernet0/1.120
+ encapsulation dot1Q 120
+!
+interface GigabitEthernet0/1.121
+ encapsulation dot1Q 121
+!
+interface GigabitEthernet0/1.122
+ encapsulation dot1Q 122
+!
+interface GigabitEthernet0/1.125
+ encapsulation dot1Q 125
+!
+interface GigabitEthernet0/1.150
+ encapsulation dot1Q 150
+!
+interface GigabitEthernet0/1.160
+ encapsulation dot1Q 160
+!
+interface GigabitEthernet0/1.170
+ encapsulation dot1Q 170
+!
+interface GigabitEthernet0/1.199
+ encapsulation dot1Q 199
+!
+interface GigabitEthernet0/1.200
+ encapsulation dot1Q 200
+!
+interface GigabitEthernet0/1.204
+ encapsulation dot1Q 204
+!
+interface GigabitEthernet0/1.209
+ encapsulation dot1Q 209
+!
+interface GigabitEthernet0/1.210
+ encapsulation dot1Q 210
+!
+interface GigabitEthernet0/1.250
+ encapsulation dot1Q 250
+!
+interface GigabitEthernet0/1.260
+ encapsulation dot1Q 260
+!
+interface GigabitEthernet0/1.270
+ encapsulation dot1Q 270
+!
+interface GigabitEthernet0/1.279
+ encapsulation dot1Q 279
+!
+interface GigabitEthernet0/1.299
+ encapsulation dot1Q 299
+!
+interface GigabitEthernet0/1.300
+ encapsulation dot1Q 300
+!
+interface GigabitEthernet0/1.350
+ encapsulation dot1Q 350
+!
+interface GigabitEthernet0/1.360
+ encapsulation dot1Q 360
+!
+interface GigabitEthernet0/1.370
+ encapsulation dot1Q 370
+!
+interface GigabitEthernet0/1.400
+ encapsulation dot1Q 400
+!
+interface GigabitEthernet0/1.500
+ encapsulation dot1Q 500
+!
+interface GigabitEthernet0/1.501
+ encapsulation dot1Q 501
+!
+interface GigabitEthernet0/1.510
+ encapsulation dot1Q 510
+!
+interface GigabitEthernet0/1.520
+ encapsulation dot1Q 520
+!
+interface GigabitEthernet0/1.550
+ encapsulation dot1Q 550
+!
+interface GigabitEthernet0/1.580
+ encapsulation dot1Q 580
+!
+interface GigabitEthernet0/1.590
+ encapsulation dot1Q 590
+!
+interface GigabitEthernet0/1.599
+ encapsulation dot1Q 599
+!
+interface GigabitEthernet0/1.600
+ encapsulation dot1Q 600
+!
+interface GigabitEthernet0/1.666
+ encapsulation dot1Q 666
+!
+interface GigabitEthernet0/1.780
+ encapsulation dot1Q 780
+!
+interface GigabitEthernet0/1.781
+ encapsulation dot1Q 781
+!
+interface GigabitEthernet0/1.800
+ encapsulation dot1Q 800
+!
+interface GigabitEthernet0/1.810
+ encapsulation dot1Q 810
+!
+interface GigabitEthernet0/1.811
+ encapsulation dot1Q 811
+!
+interface GigabitEthernet0/1.812
+ encapsulation dot1Q 812
+!
+interface GigabitEthernet0/1.813
+ encapsulation dot1Q 813
+!
+interface GigabitEthernet0/1.850
+ encapsulation dot1Q 850
+!
+interface GigabitEthernet0/1.851
+ encapsulation dot1Q 851
+!
+interface GigabitEthernet0/1.852
+ encapsulation dot1Q 852
+!
+interface GigabitEthernet0/1.853
+ encapsulation dot1Q 853
+!
+interface GigabitEthernet0/1.854
+ encapsulation dot1Q 854
+!
+interface GigabitEthernet0/1.856
+ encapsulation dot1Q 856
+!
+interface GigabitEthernet0/1.858
+ encapsulation dot1Q 858
+!
+interface GigabitEthernet0/1.859
+ encapsulation dot1Q 859
+!
+interface GigabitEthernet0/1.860
+ encapsulation dot1Q 860
+!
+interface GigabitEthernet0/1.861
+ encapsulation dot1Q 861
+!
+interface GigabitEthernet0/1.862
+ encapsulation dot1Q 862
+!
+interface GigabitEthernet0/1.863
+ encapsulation dot1Q 863
+!
+interface GigabitEthernet0/1.864
+ encapsulation dot1Q 864
+!
+interface GigabitEthernet0/1.865
+ encapsulation dot1Q 865
+!
+interface GigabitEthernet0/1.866
+ encapsulation dot1Q 866
+!
+interface GigabitEthernet0/1.867
+ encapsulation dot1Q 867
+!
+interface GigabitEthernet0/1.886
+ encapsulation dot1Q 886
+!
+interface GigabitEthernet0/1.887
+ encapsulation dot1Q 887
+!
+interface GigabitEthernet0/1.888
+ encapsulation dot1Q 888
+!
+interface GigabitEthernet0/1.890
+ encapsulation dot1Q 890
+!
+interface GigabitEthernet0/1.905
+ encapsulation dot1Q 905
+!
+interface GigabitEthernet0/1.910
+ encapsulation dot1Q 910
+!
+interface GigabitEthernet0/1.920
+ encapsulation dot1Q 920
+!
+interface GigabitEthernet0/1.931
+ encapsulation dot1Q 931
+!
+interface GigabitEthernet0/1.932
+ encapsulation dot1Q 932
+!
+interface GigabitEthernet0/1.933
+ encapsulation dot1Q 933
+!
+interface GigabitEthernet0/1.934
+ encapsulation dot1Q 934
+!
+interface GigabitEthernet0/1.940
+ encapsulation dot1Q 940
+!
+interface GigabitEthernet0/1.961
+ encapsulation dot1Q 961
+!
+interface GigabitEthernet0/1.969
+ encapsulation dot1Q 969
+!
+interface GigabitEthernet0/1.980
+ encapsulation dot1Q 980
+!
+interface GigabitEthernet0/1.1000
+ encapsulation dot1Q 1000
+!
+interface GigabitEthernet0/1.1060
+ encapsulation dot1Q 1060
+!
+interface GigabitEthernet0/1.1510
+ encapsulation dot1Q 1510
+!
+interface GigabitEthernet0/1.1950
+ encapsulation dot1Q 1950
+!
+interface GigabitEthernet0/1.1960
+ encapsulation dot1Q 1960
+!
+interface GigabitEthernet0/1.1970
+ encapsulation dot1Q 1970
+!
+interface GigabitEthernet0/1.1999
+ encapsulation dot1Q 1999
+!
+interface GigabitEthernet0/1.3000
+ encapsulation dot1Q 3000
+!
+interface GigabitEthernet0/1.3010
+ encapsulation dot1Q 3010
+!
+interface GigabitEthernet0/1.3012
+ encapsulation dot1Q 3012
+!
+interface GigabitEthernet0/1.3040
+ encapsulation dot1Q 3040
+!
+interface GigabitEthernet0/1.3041
+ encapsulation dot1Q 3041
+!
+interface GigabitEthernet0/1.3042
+ encapsulation dot1Q 3042
+!
+interface GigabitEthernet0/1.3043
+ encapsulation dot1Q 3043
+!
+interface GigabitEthernet0/1.3080
+ encapsulation dot1Q 3080
+!
+interface GigabitEthernet0/1.3081
+ encapsulation dot1Q 3081
+!
+interface GigabitEthernet0/1.3099
+ encapsulation dot1Q 3099
+!
+interface GigabitEthernet0/1.3100
+ encapsulation dot1Q 3100
+!
+interface GigabitEthernet0/1.3101
+ encapsulation dot1Q 3101
+!
+interface GigabitEthernet0/1.3111
+ encapsulation dot1Q 3111
+!
+interface GigabitEthernet0/1.3112
+ encapsulation dot1Q 3112
+!
+interface GigabitEthernet0/1.3192
+ encapsulation dot1Q 3192
+!
+interface GigabitEthernet0/1.3201
+ encapsulation dot1Q 3201
+!
+interface GigabitEthernet0/1.3202
+ encapsulation dot1Q 3202
+!
+interface GigabitEthernet0/1.3209
+ encapsulation dot1Q 3209
+!
+interface GigabitEthernet0/1.3300
+ encapsulation dot1Q 3300
+!
+interface GigabitEthernet0/1.3312
+ encapsulation dot1Q 3312
+!
+interface GigabitEthernet0/1.3313
+ encapsulation dot1Q 3313
+!
+interface GigabitEthernet0/1.3314
+ encapsulation dot1Q 3314
+!
+interface GigabitEthernet0/1.3501
+ encapsulation dot1Q 3501
+!
+interface GigabitEthernet0/1.3502
+ encapsulation dot1Q 3502
+!
+interface GigabitEthernet0/1.3503
+ encapsulation dot1Q 3503
+!
+interface GigabitEthernet0/1.3504
+ encapsulation dot1Q 3504
+!
+interface GigabitEthernet0/1.3505
+ encapsulation dot1Q 3505
+!
+interface GigabitEthernet0/1.3506
+ encapsulation dot1Q 3506
+!
+interface GigabitEthernet0/1.3507
+ encapsulation dot1Q 3507
+!
+interface GigabitEthernet0/1.3508
+ encapsulation dot1Q 3508
+!
+interface GigabitEthernet0/1.3509
+ encapsulation dot1Q 3509
+!
+interface GigabitEthernet0/1.3510
+ encapsulation dot1Q 3510
+!
+interface GigabitEthernet0/1.3901
+ encapsulation dot1Q 3901
+!
+interface GigabitEthernet0/1.3902
+ encapsulation dot1Q 3902
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -21,18 +1119,1216 @@
     <node name="SW-CAT6K5-LX01" type="SIMPLE" subtype="IOSv" location="602,578">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:21 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW-CAT6K5-LX01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description L2-link-to-iov-L2-LX
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+!
+interface GigabitEthernet0/1.11
+ encapsulation dot1Q 11
+!
+interface GigabitEthernet0/1.43
+ encapsulation dot1Q 43
+!
+interface GigabitEthernet0/1.45
+ encapsulation dot1Q 45
+!
+interface GigabitEthernet0/1.46
+ encapsulation dot1Q 46
+!
+interface GigabitEthernet0/1.52
+ encapsulation dot1Q 52
+!
+interface GigabitEthernet0/1.61
+ encapsulation dot1Q 61
+!
+interface GigabitEthernet0/1.74
+ encapsulation dot1Q 74
+!
+interface GigabitEthernet0/1.75
+ encapsulation dot1Q 75
+!
+interface GigabitEthernet0/1.76
+ encapsulation dot1Q 76
+!
+interface GigabitEthernet0/1.77
+ encapsulation dot1Q 77
+!
+interface GigabitEthernet0/1.79
+ encapsulation dot1Q 79
+!
+interface GigabitEthernet0/1.86
+ encapsulation dot1Q 86
+!
+interface GigabitEthernet0/1.87
+ encapsulation dot1Q 87
+!
+interface GigabitEthernet0/1.102
+ encapsulation dot1Q 102
+!
+interface GigabitEthernet0/1.103
+ encapsulation dot1Q 103
+!
+interface GigabitEthernet0/1.104
+ encapsulation dot1Q 104
+!
+interface GigabitEthernet0/1.107
+ encapsulation dot1Q 107
+!
+interface GigabitEthernet0/1.108
+ encapsulation dot1Q 108
+!
+interface GigabitEthernet0/1.110
+ encapsulation dot1Q 110
+!
+interface GigabitEthernet0/1.111
+ encapsulation dot1Q 111
+!
+interface GigabitEthernet0/1.120
+ encapsulation dot1Q 120
+!
+interface GigabitEthernet0/1.121
+ encapsulation dot1Q 121
+!
+interface GigabitEthernet0/1.122
+ encapsulation dot1Q 122
+!
+interface GigabitEthernet0/1.125
+ encapsulation dot1Q 125
+!
+interface GigabitEthernet0/1.199
+ encapsulation dot1Q 199
+!
+interface GigabitEthernet0/1.200
+ encapsulation dot1Q 200
+!
+interface GigabitEthernet0/1.201
+ encapsulation dot1Q 201
+!
+interface GigabitEthernet0/1.204
+ encapsulation dot1Q 204
+!
+interface GigabitEthernet0/1.205
+ encapsulation dot1Q 205
+!
+interface GigabitEthernet0/1.206
+ encapsulation dot1Q 206
+!
+interface GigabitEthernet0/1.209
+ encapsulation dot1Q 209
+!
+interface GigabitEthernet0/1.210
+ encapsulation dot1Q 210
+!
+interface GigabitEthernet0/1.299
+ encapsulation dot1Q 299
+!
+interface GigabitEthernet0/1.300
+ encapsulation dot1Q 300
+!
+interface GigabitEthernet0/1.301
+ encapsulation dot1Q 301
+!
+interface GigabitEthernet0/1.400
+ encapsulation dot1Q 400
+!
+interface GigabitEthernet0/1.500
+ encapsulation dot1Q 500
+!
+interface GigabitEthernet0/1.501
+ encapsulation dot1Q 501
+!
+interface GigabitEthernet0/1.510
+ encapsulation dot1Q 510
+!
+interface GigabitEthernet0/1.515
+ encapsulation dot1Q 515
+!
+interface GigabitEthernet0/1.516
+ encapsulation dot1Q 516
+!
+interface GigabitEthernet0/1.520
+ encapsulation dot1Q 520
+!
+interface GigabitEthernet0/1.550
+ encapsulation dot1Q 550
+!
+interface GigabitEthernet0/1.580
+ encapsulation dot1Q 580
+!
+interface GigabitEthernet0/1.590
+ encapsulation dot1Q 590
+!
+interface GigabitEthernet0/1.599
+ encapsulation dot1Q 599
+!
+interface GigabitEthernet0/1.600
+ encapsulation dot1Q 600
+!
+interface GigabitEthernet0/1.666
+ encapsulation dot1Q 666
+!
+interface GigabitEthernet0/1.667
+ encapsulation dot1Q 667
+!
+interface GigabitEthernet0/1.673
+ encapsulation dot1Q 673
+!
+interface GigabitEthernet0/1.700
+ encapsulation dot1Q 700
+!
+interface GigabitEthernet0/1.780
+ encapsulation dot1Q 780
+!
+interface GigabitEthernet0/1.781
+ encapsulation dot1Q 781
+!
+interface GigabitEthernet0/1.800
+ encapsulation dot1Q 800
+!
+interface GigabitEthernet0/1.810
+ encapsulation dot1Q 810
+!
+interface GigabitEthernet0/1.811
+ encapsulation dot1Q 811
+!
+interface GigabitEthernet0/1.812
+ encapsulation dot1Q 812
+!
+interface GigabitEthernet0/1.813
+ encapsulation dot1Q 813
+!
+interface GigabitEthernet0/1.850
+ encapsulation dot1Q 850
+!
+interface GigabitEthernet0/1.851
+ encapsulation dot1Q 851
+!
+interface GigabitEthernet0/1.852
+ encapsulation dot1Q 852
+!
+interface GigabitEthernet0/1.853
+ encapsulation dot1Q 853
+!
+interface GigabitEthernet0/1.854
+ encapsulation dot1Q 854
+!
+interface GigabitEthernet0/1.856
+ encapsulation dot1Q 856
+!
+interface GigabitEthernet0/1.857
+ encapsulation dot1Q 857
+!
+interface GigabitEthernet0/1.858
+ encapsulation dot1Q 858
+!
+interface GigabitEthernet0/1.859
+ encapsulation dot1Q 859
+!
+interface GigabitEthernet0/1.860
+ encapsulation dot1Q 860
+!
+interface GigabitEthernet0/1.861
+ encapsulation dot1Q 861
+!
+interface GigabitEthernet0/1.862
+ encapsulation dot1Q 862
+!
+interface GigabitEthernet0/1.863
+ encapsulation dot1Q 863
+!
+interface GigabitEthernet0/1.864
+ encapsulation dot1Q 864
+!
+interface GigabitEthernet0/1.865
+ encapsulation dot1Q 865
+!
+interface GigabitEthernet0/1.866
+ encapsulation dot1Q 866
+!
+interface GigabitEthernet0/1.867
+ encapsulation dot1Q 867
+!
+interface GigabitEthernet0/1.886
+ encapsulation dot1Q 886
+!
+interface GigabitEthernet0/1.887
+ encapsulation dot1Q 887
+!
+interface GigabitEthernet0/1.888
+ encapsulation dot1Q 888
+!
+interface GigabitEthernet0/1.890
+ encapsulation dot1Q 890
+!
+interface GigabitEthernet0/1.900
+ encapsulation dot1Q 900
+!
+interface GigabitEthernet0/1.905
+ encapsulation dot1Q 905
+!
+interface GigabitEthernet0/1.910
+ encapsulation dot1Q 910
+!
+interface GigabitEthernet0/1.920
+ encapsulation dot1Q 920
+!
+interface GigabitEthernet0/1.940
+ encapsulation dot1Q 940
+!
+interface GigabitEthernet0/1.961
+ encapsulation dot1Q 961
+!
+interface GigabitEthernet0/1.969
+ encapsulation dot1Q 969
+!
+interface GigabitEthernet0/1.970
+ encapsulation dot1Q 970
+!
+interface GigabitEthernet0/1.980
+ encapsulation dot1Q 980
+!
+interface GigabitEthernet0/1.1999
+ encapsulation dot1Q 1999
+!
+interface GigabitEthernet0/1.3000
+ encapsulation dot1Q 3000
+!
+interface GigabitEthernet0/1.3001
+ encapsulation dot1Q 3001
+!
+interface GigabitEthernet0/1.3010
+ encapsulation dot1Q 3010
+!
+interface GigabitEthernet0/1.3012
+ encapsulation dot1Q 3012
+!
+interface GigabitEthernet0/1.3040
+ encapsulation dot1Q 3040
+!
+interface GigabitEthernet0/1.3041
+ encapsulation dot1Q 3041
+!
+interface GigabitEthernet0/1.3042
+ encapsulation dot1Q 3042
+!
+interface GigabitEthernet0/1.3043
+ encapsulation dot1Q 3043
+!
+interface GigabitEthernet0/1.3099
+ encapsulation dot1Q 3099
+!
+interface GigabitEthernet0/1.3111
+ encapsulation dot1Q 3111
+!
+interface GigabitEthernet0/1.3112
+ encapsulation dot1Q 3112
+!
+interface GigabitEthernet0/1.3161
+ encapsulation dot1Q 3161
+!
+interface GigabitEthernet0/1.3192
+ encapsulation dot1Q 3192
+!
+interface GigabitEthernet0/1.3201
+ encapsulation dot1Q 3201
+!
+interface GigabitEthernet0/1.3202
+ encapsulation dot1Q 3202
+!
+interface GigabitEthernet0/1.3209
+ encapsulation dot1Q 3209
+!
+interface GigabitEthernet0/1.3300
+ encapsulation dot1Q 3300
+!
+interface GigabitEthernet0/1.3312
+ encapsulation dot1Q 3312
+!
+interface GigabitEthernet0/1.3313
+ encapsulation dot1Q 3313
+!
+interface GigabitEthernet0/1.3314
+ encapsulation dot1Q 3314
+!
+interface GigabitEthernet0/1.3901
+ encapsulation dot1Q 3901
+!
+interface GigabitEthernet0/1.3902
+ encapsulation dot1Q 3902
+!
+interface GigabitEthernet0/1.4001
+ encapsulation dot1Q 4001
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <node name="SW-CAT6K5-LX02" type="SIMPLE" subtype="IOSv" location="798,582">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:40 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW-CAT6K5-LX01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description L2-link-to-iov-L2-LX
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+!
+interface GigabitEthernet0/1.11
+ encapsulation dot1Q 11
+!
+interface GigabitEthernet0/1.43
+ encapsulation dot1Q 43
+!
+interface GigabitEthernet0/1.45
+ encapsulation dot1Q 45
+!
+interface GigabitEthernet0/1.46
+ encapsulation dot1Q 46
+!
+interface GigabitEthernet0/1.52
+ encapsulation dot1Q 52
+!
+interface GigabitEthernet0/1.61
+ encapsulation dot1Q 61
+!
+interface GigabitEthernet0/1.74
+ encapsulation dot1Q 74
+!
+interface GigabitEthernet0/1.75
+ encapsulation dot1Q 75
+!
+interface GigabitEthernet0/1.76
+ encapsulation dot1Q 76
+!
+interface GigabitEthernet0/1.77
+ encapsulation dot1Q 77
+!
+interface GigabitEthernet0/1.79
+ encapsulation dot1Q 79
+!
+interface GigabitEthernet0/1.86
+ encapsulation dot1Q 86
+!
+interface GigabitEthernet0/1.87
+ encapsulation dot1Q 87
+!
+interface GigabitEthernet0/1.102
+ encapsulation dot1Q 102
+!
+interface GigabitEthernet0/1.103
+ encapsulation dot1Q 103
+!
+interface GigabitEthernet0/1.104
+ encapsulation dot1Q 104
+!
+interface GigabitEthernet0/1.107
+ encapsulation dot1Q 107
+!
+interface GigabitEthernet0/1.108
+ encapsulation dot1Q 108
+!
+interface GigabitEthernet0/1.110
+ encapsulation dot1Q 110
+!
+interface GigabitEthernet0/1.111
+ encapsulation dot1Q 111
+!
+interface GigabitEthernet0/1.120
+ encapsulation dot1Q 120
+!
+interface GigabitEthernet0/1.121
+ encapsulation dot1Q 121
+!
+interface GigabitEthernet0/1.122
+ encapsulation dot1Q 122
+!
+interface GigabitEthernet0/1.125
+ encapsulation dot1Q 125
+!
+interface GigabitEthernet0/1.199
+ encapsulation dot1Q 199
+!
+interface GigabitEthernet0/1.200
+ encapsulation dot1Q 200
+!
+interface GigabitEthernet0/1.201
+ encapsulation dot1Q 201
+!
+interface GigabitEthernet0/1.204
+ encapsulation dot1Q 204
+!
+interface GigabitEthernet0/1.205
+ encapsulation dot1Q 205
+!
+interface GigabitEthernet0/1.206
+ encapsulation dot1Q 206
+!
+interface GigabitEthernet0/1.209
+ encapsulation dot1Q 209
+!
+interface GigabitEthernet0/1.210
+ encapsulation dot1Q 210
+!
+interface GigabitEthernet0/1.299
+ encapsulation dot1Q 299
+!
+interface GigabitEthernet0/1.300
+ encapsulation dot1Q 300
+!
+interface GigabitEthernet0/1.301
+ encapsulation dot1Q 301
+!
+interface GigabitEthernet0/1.400
+ encapsulation dot1Q 400
+!
+interface GigabitEthernet0/1.500
+ encapsulation dot1Q 500
+!
+interface GigabitEthernet0/1.501
+ encapsulation dot1Q 501
+!
+interface GigabitEthernet0/1.510
+ encapsulation dot1Q 510
+!
+interface GigabitEthernet0/1.515
+ encapsulation dot1Q 515
+!
+interface GigabitEthernet0/1.516
+ encapsulation dot1Q 516
+!
+interface GigabitEthernet0/1.520
+ encapsulation dot1Q 520
+!
+interface GigabitEthernet0/1.550
+ encapsulation dot1Q 550
+!
+interface GigabitEthernet0/1.580
+ encapsulation dot1Q 580
+!
+interface GigabitEthernet0/1.590
+ encapsulation dot1Q 590
+!
+interface GigabitEthernet0/1.599
+ encapsulation dot1Q 599
+!
+interface GigabitEthernet0/1.600
+ encapsulation dot1Q 600
+!
+interface GigabitEthernet0/1.666
+ encapsulation dot1Q 666
+!
+interface GigabitEthernet0/1.667
+ encapsulation dot1Q 667
+!
+interface GigabitEthernet0/1.673
+ encapsulation dot1Q 673
+!
+interface GigabitEthernet0/1.700
+ encapsulation dot1Q 700
+!
+interface GigabitEthernet0/1.780
+ encapsulation dot1Q 780
+!
+interface GigabitEthernet0/1.781
+ encapsulation dot1Q 781
+!
+interface GigabitEthernet0/1.800
+ encapsulation dot1Q 800
+!
+interface GigabitEthernet0/1.810
+ encapsulation dot1Q 810
+!
+interface GigabitEthernet0/1.811
+ encapsulation dot1Q 811
+!
+interface GigabitEthernet0/1.812
+ encapsulation dot1Q 812
+!
+interface GigabitEthernet0/1.813
+ encapsulation dot1Q 813
+!
+interface GigabitEthernet0/1.850
+ encapsulation dot1Q 850
+!
+interface GigabitEthernet0/1.851
+ encapsulation dot1Q 851
+!
+interface GigabitEthernet0/1.852
+ encapsulation dot1Q 852
+!
+interface GigabitEthernet0/1.853
+ encapsulation dot1Q 853
+!
+interface GigabitEthernet0/1.854
+ encapsulation dot1Q 854
+!
+interface GigabitEthernet0/1.856
+ encapsulation dot1Q 856
+!
+interface GigabitEthernet0/1.857
+ encapsulation dot1Q 857
+!
+interface GigabitEthernet0/1.858
+ encapsulation dot1Q 858
+!
+interface GigabitEthernet0/1.859
+ encapsulation dot1Q 859
+!
+interface GigabitEthernet0/1.860
+ encapsulation dot1Q 860
+!
+interface GigabitEthernet0/1.861
+ encapsulation dot1Q 861
+!
+interface GigabitEthernet0/1.862
+ encapsulation dot1Q 862
+!
+interface GigabitEthernet0/1.863
+ encapsulation dot1Q 863
+!
+interface GigabitEthernet0/1.864
+ encapsulation dot1Q 864
+!
+interface GigabitEthernet0/1.865
+ encapsulation dot1Q 865
+!
+interface GigabitEthernet0/1.866
+ encapsulation dot1Q 866
+!
+interface GigabitEthernet0/1.867
+ encapsulation dot1Q 867
+!
+interface GigabitEthernet0/1.886
+ encapsulation dot1Q 886
+!
+interface GigabitEthernet0/1.887
+ encapsulation dot1Q 887
+!
+interface GigabitEthernet0/1.888
+ encapsulation dot1Q 888
+!
+interface GigabitEthernet0/1.890
+ encapsulation dot1Q 890
+!
+interface GigabitEthernet0/1.900
+ encapsulation dot1Q 900
+!
+interface GigabitEthernet0/1.905
+ encapsulation dot1Q 905
+!
+interface GigabitEthernet0/1.910
+ encapsulation dot1Q 910
+!
+interface GigabitEthernet0/1.920
+ encapsulation dot1Q 920
+!
+interface GigabitEthernet0/1.940
+ encapsulation dot1Q 940
+!
+interface GigabitEthernet0/1.961
+ encapsulation dot1Q 961
+!
+interface GigabitEthernet0/1.969
+ encapsulation dot1Q 969
+!
+interface GigabitEthernet0/1.970
+ encapsulation dot1Q 970
+!
+interface GigabitEthernet0/1.980
+ encapsulation dot1Q 980
+!
+interface GigabitEthernet0/1.1999
+ encapsulation dot1Q 1999
+!
+interface GigabitEthernet0/1.3000
+ encapsulation dot1Q 3000
+!
+interface GigabitEthernet0/1.3001
+ encapsulation dot1Q 3001
+!
+interface GigabitEthernet0/1.3010
+ encapsulation dot1Q 3010
+!
+interface GigabitEthernet0/1.3012
+ encapsulation dot1Q 3012
+!
+interface GigabitEthernet0/1.3040
+ encapsulation dot1Q 3040
+!
+interface GigabitEthernet0/1.3041
+ encapsulation dot1Q 3041
+!
+interface GigabitEthernet0/1.3042
+ encapsulation dot1Q 3042
+!
+interface GigabitEthernet0/1.3043
+ encapsulation dot1Q 3043
+!
+interface GigabitEthernet0/1.3099
+ encapsulation dot1Q 3099
+!
+interface GigabitEthernet0/1.3111
+ encapsulation dot1Q 3111
+!
+interface GigabitEthernet0/1.3112
+ encapsulation dot1Q 3112
+!
+interface GigabitEthernet0/1.3161
+ encapsulation dot1Q 3161
+!
+interface GigabitEthernet0/1.3192
+ encapsulation dot1Q 3192
+!
+interface GigabitEthernet0/1.3201
+ encapsulation dot1Q 3201
+!
+interface GigabitEthernet0/1.3202
+ encapsulation dot1Q 3202
+!
+interface GigabitEthernet0/1.3209
+ encapsulation dot1Q 3209
+!
+interface GigabitEthernet0/1.3300
+ encapsulation dot1Q 3300
+!
+interface GigabitEthernet0/1.3312
+ encapsulation dot1Q 3312
+!
+interface GigabitEthernet0/1.3313
+ encapsulation dot1Q 3313
+!
+interface GigabitEthernet0/1.3314
+ encapsulation dot1Q 3314
+!
+interface GigabitEthernet0/1.3901
+ encapsulation dot1Q 3901
+!
+interface GigabitEthernet0/1.3902
+ encapsulation dot1Q 3902
+!
+interface GigabitEthernet0/1.4001
+ encapsulation dot1Q 4001
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="689,514">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 17:28:18 UTC Wed Jun 1 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname iosv-L2-LX
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ip igmp snooping
+no ipv6 cef
+!
+!
+!
+spanning-tree mode mst
+spanning-tree extend system-id
+!
+spanning-tree mst configuration
+ name REFER
+ revision 1
+ instance 1 vlan 1-4094
+!
+spanning-tree mst 0-1 priority 8192
+!
+vlan internal allocation policy ascending
+!
+vlan 1060
+ name RTCS-APP-ZIMBRA
+!
+vlan 1510
+ name CLOUD-DATA
+!
+vlan 1950
+ name RTCS-OVRL-VXLAN
+!
+vlan 1960
+ name RTCS-OVRL-NVGRE
+!
+vlan 1970
+ name RTCS-OVRL-VCDNI
+!
+vlan 1999
+ name RTCS-SVCS
+!
+vlan 3000
+ name CLOUD-SVCS
+!
+vlan 3001
+ name CLD-SVCS
+!
+vlan 3010
+ name RTCS-DATA
+!
+vlan 3012
+ name RTCS-STORAGE
+!
+vlan 3040
+ name CLD-MGMT
+!
+vlan 3041
+ name CLD-ILO
+!
+vlan 3042
+ name CLD-OPER
+!
+vlan 3043
+ name CLD-PORTAL
+!
+vlan 3080
+ name CLD-PVLAN-VMSVC
+!
+vlan 3081
+ name CLD-PVLAN-VMSVC-ISOL
+!
+vlan 3099
+ name RTCS-PUB
+!
+vlan 3100
+ name CFP_DC
+!
+vlan 3101
+ name CFP_DMZ
+!
+vlan 3111
+ name VLAN-CLOUD-GFI-DC
+!
+vlan 3112
+ name VLAN-CLOUD-GFI-ILO
+!
+vlan 3161
+ name SP-EMEF-DC01
+!
+vlan 3192
+ name CLOUD-GRUPOIPG-LAN01
+!
+vlan 3201
+ name CLOUD-CEGER-DC
+!
+vlan 3202
+ name CLOUD-CEGER-DMZ
+!
+vlan 3209
+ name CLOUD-CEGER-DMZ-BR
+!
+vlan 3300
+ name VLAN-ESTRADAS-111
+!
+vlan 3312
+ name VLAN-ESTRADAS-212
+!
+vlan 3313
+ name VLAN-ESTRADAS-213
+!
+vlan 3314
+ name VLAN-ESTRADAS-214
+!
+vlan 3501
+ name CLOUD-POOL-3501
+!
+vlan 3502
+ name CLOUD-POOL-3502
+!
+vlan 3503
+ name CLOUD-POOL-3503
+!
+vlan 3504
+ name CLOUD-POOL-3504
+!
+vlan 3505
+ name CLOUD-POOL-3505
+!
+vlan 3506
+ name CLOUD-POOL-3506
+!
+vlan 3507
+ name CLOUD-POOL-3507
+!
+vlan 3508
+ name CLOUD-POOL-3508
+!
+vlan 3509
+ name CLOUD-POOL-3509
+!
+vlan 3510
+ name CLOUD-POOL-3510
+!
+vlan 3901
+ name DEMO-ORA-TEMP-01
+!
+vlan 3902
+ name DEMO-ORA-TEMP-02
+!
+vlan 4001
+ name VLAN-IP-HEARTBEAT-SMBCLT-4001
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description LAN-LINK-to-N5K-LX01
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ description LAN-LINK-to-N5K-LX02
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/3
+ description LAN-LINK-to-CAT6K5-LX01
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/0
+ description LAN-LINK-to-CAT6K5-LX02
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -44,6 +2340,149 @@
     <node name="SW-N5K-PT01" type="SIMPLE" subtype="IOSv" location="368,194">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:30 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -53,6 +2492,142 @@
     <node name="SW-N5K-PT02" type="SIMPLE" subtype="IOSv" location="525,194">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:30 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -61,18 +2636,391 @@
     <node name="SW-CAT6K5-PT01" type="SIMPLE" subtype="IOSv" location="346,32">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:12 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <node name="SW-CAT6K5-PT02" type="SIMPLE" subtype="IOSv" location="525,33">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:55 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <node name="SW-CAT4K5-VSU01" type="SIMPLE" subtype="IOSv" location="825,32">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:44 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -80,6 +3028,142 @@
     <node name="SW-N5K-VSU01" type="SIMPLE" subtype="IOSv" location="844,181">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:57 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -88,12 +3172,277 @@
     <node name="SW-CAT4K5-VSU02" type="SIMPLE" subtype="IOSv" location="975,37">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:23 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <node name="SW-N5K-VSU02" type="SIMPLE" subtype="IOSv" location="1005,185">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:06 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -103,6 +3452,120 @@
     <node name="iosvl2-2" type="SIMPLE" subtype="IOSvL2" location="445,126">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 17:53:56 UTC Wed Jun 1 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -112,6 +3575,120 @@
     <node name="iosvl2-3" type="SIMPLE" subtype="IOSvL2" location="927,120">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 17:53:29 UTC Wed Jun 1 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -121,6 +3698,156 @@
     <node name="cat6k8-lx01" type="SIMPLE" subtype="IOSv" location="965,442">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:55 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -131,6 +3858,156 @@
     <node name="cat6k8-lx02" type="SIMPLE" subtype="IOSv" location="1111,447">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:12 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/5
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -141,6 +4018,142 @@
     <node name="iosv-15" type="SIMPLE" subtype="IOSv" location="978,560">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:03:19 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
@@ -149,6 +4162,142 @@
     <node name="iosv-16" type="SIMPLE" subtype="IOSv" location="1139,554">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 18:02:50 UTC Wed Jun 1 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
