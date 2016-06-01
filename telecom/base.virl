@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
-    <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="315,256">
+    <node name="SW-N5K-LX01" type="SIMPLE" subtype="IOSvL2" location="315,256">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -139,7 +139,7 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="iosvl2-2" type="SIMPLE" subtype="IOSvL2" location="412,252">
+    <node name="SW-N5K-LX02" type="SIMPLE" subtype="IOSvL2" location="412,252">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -263,7 +263,7 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="iosvl2-3" type="SIMPLE" subtype="IOSvL2" location="309,344">
+    <node name="SW-CAT6K5-LX01" type="SIMPLE" subtype="IOSvL2" location="309,344">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -377,7 +377,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosvl2-4" type="SIMPLE" subtype="IOSvL2" location="417,347">
+    <node name="SW-CAT6K5-LX02" type="SIMPLE" subtype="IOSvL2" location="417,347">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -491,7 +491,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosvl2-5" type="SIMPLE" subtype="IOSvL2" location="221,123">
+    <node name="SW-N5K-PT02" type="SIMPLE" subtype="IOSvL2" location="221,123">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -610,7 +610,7 @@ end</entry>
         <interface id="1" name="GigabitEthernet0/2"/>
         <interface id="2" name="GigabitEthernet0/3"/>
     </node>
-    <node name="iosvl2-6" type="SIMPLE" subtype="IOSvL2" location="113,127">
+    <node name="SW-N5K-PT01" type="SIMPLE" subtype="IOSvL2" location="113,127">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -734,7 +734,7 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="iosvl2-7" type="SIMPLE" subtype="IOSvL2" location="209,42">
+    <node name="SW-CAT6K5-POR02" type="SIMPLE" subtype="IOSvL2" location="209,42">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -848,7 +848,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosvl2-8" type="SIMPLE" subtype="IOSvL2" location="112,48">
+    <node name="SW-CAT6K5-POR01" type="SIMPLE" subtype="IOSvL2" location="112,48">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -962,7 +962,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosvl2-9" type="SIMPLE" subtype="IOSvL2" location="629,119">
+    <node name="SW-N5K-VSU02" type="SIMPLE" subtype="IOSvL2" location="629,119">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -1086,7 +1086,7 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="iosvl2-10" type="SIMPLE" subtype="IOSvL2" location="522,119">
+    <node name="SW-N5K-VSU01" type="SIMPLE" subtype="IOSvL2" location="522,119">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -1205,7 +1205,7 @@ end</entry>
         <interface id="1" name="GigabitEthernet0/2"/>
         <interface id="2" name="GigabitEthernet0/3"/>
     </node>
-    <node name="iosvl2-11" type="SIMPLE" subtype="IOSvL2" location="614,29">
+    <node name="SW-CAT4k5-VSU02" type="SIMPLE" subtype="IOSvL2" location="614,29">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -1319,7 +1319,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosvl2-12" type="SIMPLE" subtype="IOSvL2" location="506,23">
+    <node name="SW-CAT4k5-VSU01" type="SIMPLE" subtype="IOSvL2" location="506,23">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -1433,7 +1433,7 @@ end</entry>
         <interface id="0" name="GigabitEthernet0/1"/>
         <interface id="1" name="GigabitEthernet0/2"/>
     </node>
-    <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="566,288">
+    <node name="6K8-LX01" type="SIMPLE" subtype="IOSv" location="566,288">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
@@ -1602,7 +1602,7 @@ end</entry>
         <interface id="4" name="GigabitEthernet0/5"/>
         <interface id="5" name="GigabitEthernet0/6"/>
     </node>
-    <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="654,292">
+    <node name="6K8-LX02" type="SIMPLE" subtype="IOSv" location="654,292">
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
