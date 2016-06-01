@@ -4,7 +4,7 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:13 UTC Thu May 26 2016
+! Last configuration change at 12:02:07 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -12,11 +12,29 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname N5KLX-01
+hostname SW-N5K-LX01
 !
 boot-start-marker
 boot-end-marker
 !
+!
+vrf definition CORE_DCI
+ rd 10:10
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition INTERCONN
+ rd 20:20
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition RTCS-OVRL-VXLAN
+ rd 30:30
+ !
+ address-family ipv4
+ exit-address-family
 !
 !
 no aaa new-model
@@ -25,11 +43,13 @@ no aaa new-model
 !
 !
 !
+vtp mode transparent
 !
 !
 !
 no ip domain-lookup
 ip cef
+no ip igmp snooping
 no ipv6 cef
 !
 !
@@ -38,6 +58,391 @@ spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 !
 vlan internal allocation policy ascending
+!
+vlan 10
+ name ICONN-CORE
+!
+vlan 36
+ name Rede_Openstack
+!
+vlan 45
+ name RT:Desenvolvimento
+!
+vlan 46
+ name RT:videoconferencia
+!
+vlan 50
+ name CP_MGMT
+!
+vlan 52
+ name Sisfer_52_NOC
+!
+vlan 61
+ name SERVERS-DADOS
+!
+vlan 74
+ name DMZ_RT_Externa
+!
+vlan 75
+ name DMZ_RT_Interna
+!
+vlan 76
+ name CORP-DMZPUB-LX01
+!
+vlan 77
+ name RAVE_SInt
+!
+vlan 91
+ name LOCAL-BH
+!
+vlan 102
+ name Sisfer_TLCM
+!
+vlan 103
+ name Sisfer_103
+!
+vlan 104
+ name Sisfer_Video
+!
+vlan 107
+ name Sisfer_107
+!
+vlan 110
+ name RF-PROXY
+!
+vlan 111
+ name VDI-REFER-04
+!
+vlan 120
+ name ICONN-L0
+!
+vlan 121
+ name ICONN-L1
+!
+vlan 122
+ name ICONN-L2
+!
+vlan 125
+ name ICONN-EX
+!
+vlan 150
+ name INFRA-OVRL-VXLAN
+!
+vlan 160
+ name INFRA-OVRL-NVGRE
+!
+vlan 170
+ name INFRA-OVRL-VCDNI
+!
+vlan 199
+ name INFRA-SVCS
+!
+vlan 200
+ name Interligacao_CAT
+!
+vlan 204
+ name RT-MGMT
+!
+vlan 209
+ name inter_vlan_cloud
+!
+vlan 210
+ name MGMT-MON
+!
+vlan 250
+ name MGMT-OVRL-VXLAN
+!
+vlan 260
+ name MGMT-OVRL-NVGRE
+!
+vlan 270
+ name MGMT-OVRL-VCDNI
+!
+vlan 279
+ name RTCS-OVRL-VCDNI-TEMP
+!
+vlan 299
+ name MGMT-SVCS
+!
+vlan 300
+ name DMZ_RF_Externa
+!
+vlan 350
+ name CORP-OVRL-VXLAN
+!
+vlan 360
+ name CORP-OVRL-NVGRE
+!
+vlan 370
+ name CORP-OVRL-VCDNI
+!
+vlan 400
+ name RF-DMZINT
+!
+vlan 500
+ name CORP-DC-RF
+!
+vlan 501
+ name CORP-DC
+!
+vlan 510
+ name CORP-DC-IP
+!
+vlan 520
+ name CORP-DC-RE
+!
+vlan 550
+ name CORP-DC-RT
+!
+vlan 580
+ name CORP-STORAGE
+!
+vlan 590
+ name CORP-DATA
+!
+vlan 599
+ name CORP-SVCS
+!
+vlan 600 
+!
+vlan 666
+ name Dummy_Checkpoint
+!
+vlan 780
+ name VDI-ReferTelecom
+!
+vlan 781
+ name VDI-Refer
+!
+vlan 800
+ name VLAN-DEV-RF
+!
+vlan 810
+ name VDI-REFER
+!
+vlan 811
+ name VDI-REFER-02
+!
+vlan 812
+ name CORP-DMZINT-RF
+!
+vlan 813
+ name VDI-REFER-03
+!
+vlan 850
+ name RTDMZ_Oriente
+!
+vlan 851
+ name Housing
+!
+vlan 852
+ name RTDirecto
+!
+vlan 853
+ name DevelopmentRT
+!
+vlan 854
+ name RT-BACKUP
+!
+vlan 856
+ name VDI-RT
+!
+vlan 858 
+!
+vlan 859
+ name FMNF
+!
+vlan 860
+ name DEV_SAG
+!
+vlan 861
+ name VLAN_DEV_861
+!
+vlan 862
+ name VLAN_DEV_862
+!
+vlan 863
+ name VLAN_DEV_863
+!
+vlan 864
+ name VLAN_DEV_864
+!
+vlan 865
+ name VLAN_DEV_865
+!
+vlan 866
+ name VLAN_DEV_866
+!
+vlan 867
+ name VLAN_DEV_867
+!
+vlan 886
+ name RT:Replicacao
+!
+vlan 887
+ name RT:ReservadaStorage
+!
+vlan 888
+ name RT:iSCSI
+!
+vlan 890
+ name INFRA-DATA
+!
+vlan 905
+ name INFRA-ILO02
+!
+vlan 910
+ name INFRA-DC
+!
+vlan 920
+ name INFRA-DMZ
+!
+vlan 931
+ name INFRA-VMWBOOT-INFRA
+!
+vlan 932
+ name INFRA-VMWBOOT-MGMT
+!
+vlan 933
+ name INFRA-VMWBOOT-CORP
+!
+vlan 934
+ name INFRA-VMWBOOT-RTCS
+!
+vlan 940
+ name INFRA-LOG
+!
+vlan 961
+ name RT-VMOTION
+!
+vlan 969
+ name RT-HEARTBEAT
+!
+vlan 980
+ name INFRA-SYNC
+!
+vlan 1000 
+!
+vlan 1060
+ name RTCS-APP-ZIMBRA
+!
+vlan 1510
+ name CLOUD-DATA
+!
+vlan 1950
+ name RTCS-OVRL-VXLAN
+!
+vlan 1960
+ name RTCS-OVRL-NVGRE
+!
+vlan 1970
+ name RTCS-OVRL-VCDNI
+!
+vlan 1999
+ name RTCS-SVCS
+!
+vlan 3000
+ name CLOUD-SVCS
+!
+vlan 3010
+ name RTCS-DATA
+!
+vlan 3012
+ name RTCS-STORAGE
+!
+vlan 3040
+ name RTCS-DC
+!
+vlan 3041
+ name CLD-ILO
+!
+vlan 3042
+ name RTCS-APP
+!
+vlan 3043
+ name RTCS-DMZ
+!
+vlan 3080
+ name CLD-PVLAN-VMSVC
+  private-vlan association 3081
+!
+vlan 3081
+ name CLD-PVLAN-VMSVC-ISOL
+!
+vlan 3099
+ name RTCS-PUB
+!
+vlan 3100
+ name CFP_DC
+!
+vlan 3101
+ name CFP_DMZ
+!
+vlan 3111
+ name VLAN-CLOUD-GFI-DC
+!
+vlan 3112
+ name VLAN-CLOUD-GFI-ILO
+!
+vlan 3192
+ name CLOUD-GRUPOIPG-LAN01
+!
+vlan 3201
+ name CLOUD-CEGER-DC
+!
+vlan 3202
+ name CLOUD-CEGER-DMZ
+!
+vlan 3209
+ name CLOUD-CEGER-DMZ-BR
+!
+vlan 3300
+ name VLAN-ESTRADAS-111
+!
+vlan 3312
+ name VLAN-ESTRADAS-212
+!
+vlan 3313
+ name VLAN-ESTRADAS-213
+!
+vlan 3314
+ name VLAN-ESTRADAS-214
+!
+vlan 3501
+ name CLOUD-POOL-3501
+!
+vlan 3502
+ name CLOUD-POOL-3502
+!
+vlan 3503
+ name CLOUD-POOL-3503
+!
+vlan 3504
+ name CLOUD-POOL-3504
+!
+vlan 3505
+ name CLOUD-POOL-3505
+!
+vlan 3506
+ name CLOUD-POOL-3506
+!
+vlan 3507
+ name CLOUD-POOL-3507
+!
+vlan 3508
+ name CLOUD-POOL-3508
+!
+vlan 3509
+ name CLOUD-POOL-3509
+!
+vlan 3510
+ name CLOUD-POOL-3510
+!
+vlan 3901
+ name DEMO-ORA-TEMP-01
+!
+vlan 3902
+ name DEMO-ORA-TEMP-02
 !
 ! 
 !
@@ -143,7 +548,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:02 UTC Thu May 26 2016
+! Last configuration change at 12:01:56 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -151,11 +556,29 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname Switch
+hostname SW-N5K-LX02
 !
 boot-start-marker
 boot-end-marker
 !
+!
+vrf definition CORE_DCI
+ rd 10:10
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition INTERCONN
+ rd 20:20
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition RTCS-OVRL-VXLAN
+ rd 30:30
+ !
+ address-family ipv4
+ exit-address-family
 !
 !
 no aaa new-model
@@ -164,10 +587,13 @@ no aaa new-model
 !
 !
 !
+vtp mode transparent
 !
 !
 !
+no ip domain-lookup
 ip cef
+no ip igmp snooping
 no ipv6 cef
 !
 !
@@ -176,6 +602,391 @@ spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 !
 vlan internal allocation policy ascending
+!
+vlan 10
+ name ICONN-CORE
+!
+vlan 36
+ name Rede_Openstack
+!
+vlan 45
+ name RT:Desenvolvimento
+!
+vlan 46
+ name RT:videoconferencia
+!
+vlan 50
+ name CP_MGMT
+!
+vlan 52
+ name Sisfer_52_NOC
+!
+vlan 61
+ name SERVERS-DADOS
+!
+vlan 74
+ name DMZ_RT_Externa
+!
+vlan 75
+ name DMZ_RT_Interna
+!
+vlan 76
+ name CORP-DMZPUB-LX01
+!
+vlan 77
+ name RAVE_SInt
+!
+vlan 91
+ name LOCAL-BH
+!
+vlan 102
+ name Sisfer_TLCM
+!
+vlan 103
+ name Sisfer_103
+!
+vlan 104
+ name Sisfer_Video
+!
+vlan 107
+ name Sisfer_107
+!
+vlan 110
+ name RF-PROXY
+!
+vlan 111
+ name VDI-REFER-04
+!
+vlan 120
+ name ICONN-L0
+!
+vlan 121
+ name ICONN-L1
+!
+vlan 122
+ name ICONN-L2
+!
+vlan 125
+ name ICONN-EX
+!
+vlan 150
+ name INFRA-OVRL-VXLAN
+!
+vlan 160
+ name INFRA-OVRL-NVGRE
+!
+vlan 170
+ name INFRA-OVRL-VCDNI
+!
+vlan 199
+ name INFRA-SVCS
+!
+vlan 200
+ name Interligacao_CAT
+!
+vlan 204
+ name RT-MGMT
+!
+vlan 209
+ name inter_vlan_cloud
+!
+vlan 210
+ name MGMT-MON
+!
+vlan 250
+ name MGMT-OVRL-VXLAN
+!
+vlan 260
+ name MGMT-OVRL-NVGRE
+!
+vlan 270
+ name MGMT-OVRL-VCDNI
+!
+vlan 279
+ name RTCS-OVRL-VCDNI-TEMP
+!
+vlan 299
+ name MGMT-SVCS
+!
+vlan 300
+ name DMZ_RF_Externa
+!
+vlan 350
+ name CORP-OVRL-VXLAN
+!
+vlan 360
+ name CORP-OVRL-NVGRE
+!
+vlan 370
+ name CORP-OVRL-VCDNI
+!
+vlan 400
+ name RF-DMZINT
+!
+vlan 500
+ name CORP-DC-RF
+!
+vlan 501
+ name CORP-DC
+!
+vlan 510
+ name CORP-DC-IP
+!
+vlan 520
+ name CORP-DC-RE
+!
+vlan 550
+ name CORP-DC-RT
+!
+vlan 580
+ name CORP-STORAGE
+!
+vlan 590
+ name CORP-DATA
+!
+vlan 599
+ name CORP-SVCS
+!
+vlan 600 
+!
+vlan 666
+ name Dummy_Checkpoint
+!
+vlan 780
+ name VDI-ReferTelecom
+!
+vlan 781
+ name VDI-Refer
+!
+vlan 800
+ name VLAN-DEV-RF
+!
+vlan 810
+ name VDI-REFER
+!
+vlan 811
+ name VDI-REFER-02
+!
+vlan 812
+ name CORP-DMZINT-RF
+!
+vlan 813
+ name VDI-REFER-03
+!
+vlan 850
+ name RTDMZ_Oriente
+!
+vlan 851
+ name Housing
+!
+vlan 852
+ name RTDirecto
+!
+vlan 853
+ name DevelopmentRT
+!
+vlan 854
+ name RT-BACKUP
+!
+vlan 856
+ name VDI-RT
+!
+vlan 858 
+!
+vlan 859
+ name FMNF
+!
+vlan 860
+ name DEV_SAG
+!
+vlan 861
+ name VLAN_DEV_861
+!
+vlan 862
+ name VLAN_DEV_862
+!
+vlan 863
+ name VLAN_DEV_863
+!
+vlan 864
+ name VLAN_DEV_864
+!
+vlan 865
+ name VLAN_DEV_865
+!
+vlan 866
+ name VLAN_DEV_866
+!
+vlan 867
+ name VLAN_DEV_867
+!
+vlan 886
+ name RT:Replicacao
+!
+vlan 887
+ name RT:ReservadaStorage
+!
+vlan 888
+ name RT:iSCSI
+!
+vlan 890
+ name INFRA-DATA
+!
+vlan 905
+ name INFRA-ILO02
+!
+vlan 910
+ name INFRA-DC
+!
+vlan 920
+ name INFRA-DMZ
+!
+vlan 931
+ name INFRA-VMWBOOT-INFRA
+!
+vlan 932
+ name INFRA-VMWBOOT-MGMT
+!
+vlan 933
+ name INFRA-VMWBOOT-CORP
+!
+vlan 934
+ name INFRA-VMWBOOT-RTCS
+!
+vlan 940
+ name INFRA-LOG
+!
+vlan 961
+ name RT-VMOTION
+!
+vlan 969
+ name RT-HEARTBEAT
+!
+vlan 980
+ name INFRA-SYNC
+!
+vlan 1000 
+!
+vlan 1060
+ name RTCS-APP-ZIMBRA
+!
+vlan 1510
+ name CLOUD-DATA
+!
+vlan 1950
+ name RTCS-OVRL-VXLAN
+!
+vlan 1960
+ name RTCS-OVRL-NVGRE
+!
+vlan 1970
+ name RTCS-OVRL-VCDNI
+!
+vlan 1999
+ name RTCS-SVCS
+!
+vlan 3000
+ name CLOUD-SVCS
+!
+vlan 3010
+ name RTCS-DATA
+!
+vlan 3012
+ name RTCS-STORAGE
+!
+vlan 3040
+ name RTCS-DC
+!
+vlan 3041
+ name CLD-ILO
+!
+vlan 3042
+ name RTCS-APP
+!
+vlan 3043
+ name RTCS-DMZ
+!
+vlan 3080
+ name CLD-PVLAN-VMSVC
+  private-vlan association 3081
+!
+vlan 3081
+ name CLD-PVLAN-VMSVC-ISOL
+!
+vlan 3099
+ name RTCS-PUB
+!
+vlan 3100
+ name CFP_DC
+!
+vlan 3101
+ name CFP_DMZ
+!
+vlan 3111
+ name VLAN-CLOUD-GFI-DC
+!
+vlan 3112
+ name VLAN-CLOUD-GFI-ILO
+!
+vlan 3192
+ name CLOUD-GRUPOIPG-LAN01
+!
+vlan 3201
+ name CLOUD-CEGER-DC
+!
+vlan 3202
+ name CLOUD-CEGER-DMZ
+!
+vlan 3209
+ name CLOUD-CEGER-DMZ-BR
+!
+vlan 3300
+ name VLAN-ESTRADAS-111
+!
+vlan 3312
+ name VLAN-ESTRADAS-212
+!
+vlan 3313
+ name VLAN-ESTRADAS-213
+!
+vlan 3314
+ name VLAN-ESTRADAS-214
+!
+vlan 3501
+ name CLOUD-POOL-3501
+!
+vlan 3502
+ name CLOUD-POOL-3502
+!
+vlan 3503
+ name CLOUD-POOL-3503
+!
+vlan 3504
+ name CLOUD-POOL-3504
+!
+vlan 3505
+ name CLOUD-POOL-3505
+!
+vlan 3506
+ name CLOUD-POOL-3506
+!
+vlan 3507
+ name CLOUD-POOL-3507
+!
+vlan 3508
+ name CLOUD-POOL-3508
+!
+vlan 3509
+ name CLOUD-POOL-3509
+!
+vlan 3510
+ name CLOUD-POOL-3510
+!
+vlan 3901
+ name DEMO-ORA-TEMP-01
+!
+vlan 3902
+ name DEMO-ORA-TEMP-02
 !
 ! 
 !
@@ -267,7 +1078,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:26 UTC Thu May 26 2016
+! Last configuration change at 12:08:15 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -381,7 +1192,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:48 UTC Thu May 26 2016
+! Last configuration change at 12:07:24 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -495,7 +1306,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:03 UTC Thu May 26 2016
+! Last configuration change at 12:05:33 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -614,7 +1425,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:03:59 UTC Thu May 26 2016
+! Last configuration change at 12:02:04 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -738,7 +1549,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:41 UTC Thu May 26 2016
+! Last configuration change at 12:01:48 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -852,7 +1663,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:44 UTC Thu May 26 2016
+! Last configuration change at 12:06:13 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -966,7 +1777,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:03:59 UTC Thu May 26 2016
+! Last configuration change at 12:02:23 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1090,7 +1901,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:03:48 UTC Thu May 26 2016
+! Last configuration change at 12:14:57 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1209,7 +2020,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:30 UTC Thu May 26 2016
+! Last configuration change at 12:11:21 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1323,7 +2134,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:17 UTC Thu May 26 2016
+! Last configuration change at 12:24:15 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1437,7 +2248,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:05:02 UTC Thu May 26 2016
+! Last configuration change at 12:24:18 UTC Wed Jun 1 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1498,7 +2309,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.1.31 255.255.0.0
+ ip address 10.255.1.75 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -1606,7 +2417,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:56 UTC Thu May 26 2016
+! Last configuration change at 12:24:15 UTC Wed Jun 1 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1667,7 +2478,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.1.30 255.255.0.0
+ ip address 10.255.1.77 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -1775,7 +2586,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:38 UTC Thu May 26 2016
+! Last configuration change at 12:06:26 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -1889,7 +2700,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 01:04:47 UTC Thu May 26 2016
+! Last configuration change at 12:25:38 UTC Wed Jun 1 2016
 !
 version 15.2
 service timestamps debug datetime msec
