@@ -4,7 +4,7 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:12 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:31 UTC Mon Jan 30 2017 by cisco
 !
 version 15.6
 service timestamps debug datetime msec
@@ -30,8 +30,20 @@ vrf definition VPN-UNDERLAY
  address-family ipv4 multicast
  exit-address-family
 !
+enable secret 5 $1$wmHT$BV8JT2IYQiDboLU4hT0V10
 !
-no aaa new-model
+aaa new-model
+!
+!
+aaa authentication login VTY local-case
+aaa authentication login CONSOLE local-case
+aaa authorization exec VTY local 
+!
+!
+!
+!
+!
+aaa session-id common
 ethernet lmi ce
 !
 !
@@ -60,6 +72,7 @@ multilink bundle-name authenticated
 !
 !
 !
+username cisco privilege 15 secret 5 $1$C9OS$iIZpugcB.Smo/z1LajmKX/
 !
 redundancy
 !
@@ -154,6 +167,8 @@ no ip http secure-server
 !
 !
 !
+!
+!
 control-plane
 !
 banner exec `
@@ -185,9 +200,16 @@ banner login `
 **************************************************************************`
 !
 line con 0
+ privilege level 15
+ login authentication CONSOLE
 line aux 0
 line vty 0 4
- login
+ authorization exec VTY
+ login authentication VTY
+ transport input none
+line vty 5 924
+ authorization exec VTY
+ login authentication VTY
  transport input none
 !
 no scheduler allocate
@@ -204,7 +226,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:28 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:55 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -364,7 +386,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:27 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:55 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -500,7 +522,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:36 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:04 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -636,7 +658,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:32 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:53 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -796,7 +818,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:26 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:53 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -956,7 +978,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:32 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:50 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1092,7 +1114,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:33 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:08 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1228,7 +1250,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:22 UTC Mon Jan 30 2017
+! Last configuration change at 13:04:49 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1388,7 +1410,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:36 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:00 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1548,7 +1570,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:57:54 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:21 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1684,7 +1706,7 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 12:58:21 UTC Mon Jan 30 2017
+! Last configuration change at 13:05:18 UTC Mon Jan 30 2017
 !
 version 15.6
 service timestamps debug datetime msec
