@@ -4,8 +4,8 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:29 UTC Tue Jan 31 2017 by cisco
-! NVRAM config last updated at 22:46:30 UTC Tue Jan 31 2017 by cisco
+! Last configuration change at 17:34:33 UTC Thu Feb 2 2017 by cisco
+! NVRAM config last updated at 17:34:33 UTC Thu Feb 2 2017 by cisco
 !
 version 15.6
 service timestamps debug datetime msec
@@ -178,11 +178,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.129 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.lx.02
@@ -190,11 +194,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.129 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -216,10 +224,15 @@ interface GigabitEthernet0/3.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.6 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 02050D480809
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -234,10 +247,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.14 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 05080F1C2243
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -252,16 +270,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.193 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 110A1016141D
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.1
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.11 authentication message-digest
@@ -272,7 +294,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -289,32 +310,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -378,8 +399,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:25 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:25 UTC Tue Jan 31 2017
+! Last configuration change at 17:30:31 UTC Thu Feb 2 2017
+! NVRAM config last updated at 17:30:31 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -466,7 +487,7 @@ interface Loopback1
 interface Loopback101
  description Multicast RP-01
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.2.1 255.255.255.224
+ ip address 10.254.2.2 255.255.255.224
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
@@ -475,7 +496,7 @@ interface Loopback101
 interface Loopback102
  description Multicast RP-02
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.4.1 255.255.255.240
+ ip address 10.254.4.2 255.255.255.240
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 110A1016141D
  ip ospf network point-to-point
@@ -484,7 +505,7 @@ interface Loopback102
 interface Loopback103
  description Multicast RP-03
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.6.1 255.255.255.128
+ ip address 10.254.6.2 255.255.255.128
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
@@ -493,7 +514,7 @@ interface Loopback103
 interface Loopback104
  description Multicast RP-04
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.8.1 255.255.255.192
+ ip address 10.254.8.2 255.255.255.192
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -502,7 +523,7 @@ interface Loopback104
 interface Loopback105
  description Multicast RP-05
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.10.1 255.255.255.128
+ ip address 10.254.10.2 255.255.255.128
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 14141B180F0B
  ip ospf network point-to-point
@@ -511,7 +532,7 @@ interface Loopback105
 interface Loopback106
  description Multicast RP-06
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.12.1 255.255.255.192
+ ip address 10.254.12.2 255.255.255.192
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -537,11 +558,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.130 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 060506324F41
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.lx.01
@@ -549,11 +574,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.130 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 060506324F41
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -575,10 +604,15 @@ interface GigabitEthernet0/3.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.10 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 060506324F41
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -593,10 +627,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.1.18 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -611,16 +650,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.197 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 121A0C041104
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.2
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.11 authentication message-digest
@@ -631,7 +674,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -648,32 +690,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -728,8 +770,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:56 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:56 UTC Tue Jan 31 2017
+! Last configuration change at 18:44:58 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:44:58 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -820,10 +862,31 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.lx.01
  encapsulation dot1Q 4
  ip address 10.0.1.5 255.255.255.252
+ no ip redirects
+ ip pim bfd
+ ip igmp join-group 225.240.0.1
+ ip igmp join-group 225.224.0.1
+ ip igmp join-group 225.208.0.1
+ ip igmp join-group 225.192.0.1
+ ip igmp join-group 225.176.0.1
+ ip igmp join-group 225.160.0.1
+ ip igmp join-group 225.144.0.1
+ ip igmp join-group 225.128.0.1
+ ip igmp join-group 225.112.0.1
+ ip igmp join-group 225.96.0.1
+ ip igmp join-group 225.80.0.1
+ ip igmp join-group 225.64.0.1
+ ip igmp join-group 225.48.0.1
+ ip igmp join-group 225.32.0.1
+ ip igmp join-group 225.16.0.1
  ip igmp join-group 225.1.1.1
+ ip igmp join-group 225.0.0.1
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -836,14 +899,19 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.lx.02
  encapsulation dot1Q 4
  ip address 10.0.1.9 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.201
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.11 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
@@ -905,8 +973,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:55 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:55 UTC Tue Jan 31 2017
+! Last configuration change at 18:48:12 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:48:12 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -997,10 +1065,15 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.lx.01
  encapsulation dot1Q 4
  ip address 10.0.1.13 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip igmp join-group 225.1.1.1
  ip ospf message-digest-key 1 md5 7 030752180500
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -1013,14 +1086,19 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.lx.02
  encapsulation dot1Q 4
  ip address 10.0.1.17 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.11
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.202
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.11 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
@@ -1082,8 +1160,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:23 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:24 UTC Tue Jan 31 2017
+! Last configuration change at 17:28:29 UTC Thu Feb 2 2017
+! NVRAM config last updated at 17:28:29 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1170,7 +1248,7 @@ interface Loopback1
 interface Loopback101
  description Multicast RP-01
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.2.1 255.255.255.192
+ ip address 10.254.2.3 255.255.255.192
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
@@ -1179,7 +1257,7 @@ interface Loopback101
 interface Loopback102
  description Multicast RP-02
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.4.1 255.255.255.128
+ ip address 10.254.4.3 255.255.255.128
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
@@ -1188,7 +1266,7 @@ interface Loopback102
 interface Loopback103
  description Multicast RP-03
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.6.1 255.255.255.240
+ ip address 10.254.6.3 255.255.255.240
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
@@ -1197,7 +1275,7 @@ interface Loopback103
 interface Loopback104
  description Multicast RP-04
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.8.1 255.255.255.224
+ ip address 10.254.8.3 255.255.255.224
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 060506324F41
  ip ospf network point-to-point
@@ -1206,7 +1284,7 @@ interface Loopback104
 interface Loopback105
  description Multicast RP-05
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.10.1 255.255.255.0
+ ip address 10.254.10.3 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
@@ -1215,7 +1293,7 @@ interface Loopback105
 interface Loopback106
  description Multicast RP-06
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.12.1 255.255.254.0
+ ip address 10.254.12.3 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
@@ -1241,11 +1319,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.133 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 13061E010803
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.pt.02
@@ -1253,11 +1335,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.133 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 13061E010803
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -1279,10 +1365,15 @@ interface GigabitEthernet0/3.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.6 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -1297,10 +1388,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.14 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 1511021F0725
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -1315,16 +1411,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.201 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 121A0C041104
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.3
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.22 authentication message-digest
@@ -1335,7 +1435,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -1352,32 +1451,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -1432,8 +1531,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:21 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:21 UTC Tue Jan 31 2017
+! Last configuration change at 17:22:10 UTC Thu Feb 2 2017
+! NVRAM config last updated at 17:22:10 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1515,7 +1614,7 @@ interface Loopback1
 interface Loopback101
  description Multicast RP-01
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.2.1 255.255.255.128
+ ip address 10.254.2.4 255.255.255.128
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -1524,7 +1623,7 @@ interface Loopback101
 interface Loopback102
  description Multicast RP-02
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.4.1 255.255.255.192
+ ip address 10.254.4.4 255.255.255.192
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -1533,7 +1632,7 @@ interface Loopback102
 interface Loopback103
  description Multicast RP-03
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.6.1 255.255.255.224
+ ip address 10.254.6.4 255.255.255.224
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -1542,7 +1641,7 @@ interface Loopback103
 interface Loopback104
  description Multicast RP-04
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.8.1 255.255.255.240
+ ip address 10.254.8.4 255.255.255.240
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
@@ -1551,7 +1650,7 @@ interface Loopback104
 interface Loopback105
  description Multicast RP-05
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.10.1 255.255.254.0
+ ip address 10.254.10.4 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 05080F1C2243
  ip ospf network point-to-point
@@ -1560,7 +1659,7 @@ interface Loopback105
 interface Loopback106
  description Multicast RP-06
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.12.1 255.255.255.0
+ ip address 10.254.12.4 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 14141B180F0B
  ip ospf network point-to-point
@@ -1586,11 +1685,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.134 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.pt.01
@@ -1598,11 +1701,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.134 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -1624,10 +1731,15 @@ interface GigabitEthernet0/3.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.10 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -1642,10 +1754,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.2.18 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -1660,16 +1777,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.194 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.4
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.22 authentication message-digest
@@ -1680,7 +1801,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -1697,32 +1817,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -1777,8 +1897,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:56 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:56 UTC Tue Jan 31 2017
+! Last configuration change at 18:49:20 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:49:20 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1868,9 +1988,30 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.pt.01
  encapsulation dot1Q 4
  ip address 10.0.2.5 255.255.255.252
+ no ip redirects
+ ip pim bfd
+ ip igmp join-group 225.240.0.1
+ ip igmp join-group 225.224.0.1
+ ip igmp join-group 225.208.0.1
+ ip igmp join-group 225.192.0.1
+ ip igmp join-group 225.176.0.1
+ ip igmp join-group 225.160.0.1
+ ip igmp join-group 225.144.0.1
+ ip igmp join-group 225.128.0.1
+ ip igmp join-group 225.112.0.1
+ ip igmp join-group 225.96.0.1
+ ip igmp join-group 225.80.0.1
+ ip igmp join-group 225.64.0.1
+ ip igmp join-group 225.48.0.1
+ ip igmp join-group 225.32.0.1
+ ip igmp join-group 225.16.0.1
+ ip igmp join-group 225.0.0.1
  ip ospf message-digest-key 1 md5 7 13061E010803
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -1883,14 +2024,19 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.pt.02
  encapsulation dot1Q 4
  ip address 10.0.2.9 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.203
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.22 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
@@ -1952,8 +2098,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:56 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:56 UTC Tue Jan 31 2017
+! Last configuration change at 18:49:24 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:49:24 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2043,9 +2189,14 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.pt.01
  encapsulation dot1Q 4
  ip address 10.0.2.13 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -2058,14 +2209,19 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.pt.02
  encapsulation dot1Q 4
  ip address 10.0.2.17 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 02050D480809
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.22
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.204
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.22 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
@@ -2127,8 +2283,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:25 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:25 UTC Tue Jan 31 2017
+! Last configuration change at 17:29:37 UTC Thu Feb 2 2017
+! NVRAM config last updated at 17:29:37 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2215,7 +2371,7 @@ interface Loopback1
 interface Loopback101
  description Multicast RP-01
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.2.1 255.255.255.0
+ ip address 10.254.2.5 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 02050D480809
  ip ospf network point-to-point
@@ -2224,7 +2380,7 @@ interface Loopback101
 interface Loopback102
  description Multicast RP-02
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.4.1 255.255.254.0
+ ip address 10.254.4.5 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 02050D480809
  ip ospf network point-to-point
@@ -2233,7 +2389,7 @@ interface Loopback102
 interface Loopback103
  description Multicast RP-03
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.6.1 255.255.255.0
+ ip address 10.254.6.5 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
@@ -2242,7 +2398,7 @@ interface Loopback103
 interface Loopback104
  description Multicast RP-04
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.8.1 255.255.254.0
+ ip address 10.254.8.5 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 05080F1C2243
  ip ospf network point-to-point
@@ -2251,7 +2407,7 @@ interface Loopback104
 interface Loopback105
  description Multicast RP-05
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.10.1 255.255.255.240
+ ip address 10.254.10.5 255.255.255.240
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
@@ -2260,7 +2416,7 @@ interface Loopback105
 interface Loopback106
  description Multicast RP-06
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.12.1 255.255.255.224
+ ip address 10.254.12.5 255.255.255.224
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
@@ -2286,11 +2442,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.137 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.vs.02
@@ -2298,11 +2458,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.137 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -2324,10 +2488,15 @@ interface GigabitEthernet0/3.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.6 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -2342,10 +2511,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.14 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 121A0C041104
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -2360,16 +2534,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.202 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 0822455D0A16
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.5
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.33 authentication message-digest
@@ -2380,7 +2558,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -2397,32 +2574,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -2478,8 +2655,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:24 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:25 UTC Tue Jan 31 2017
+! Last configuration change at 17:44:18 UTC Thu Feb 2 2017
+! NVRAM config last updated at 17:44:18 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2561,7 +2738,7 @@ interface Loopback1
 interface Loopback101
  description Multicast RP-01
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.2.1 255.255.254.0
+ ip address 10.254.2.6 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 045802150C2E
  ip ospf network point-to-point
@@ -2570,7 +2747,7 @@ interface Loopback101
 interface Loopback102
  description Multicast RP-02
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.4.1 255.255.255.0
+ ip address 10.254.4.6 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
@@ -2579,7 +2756,7 @@ interface Loopback102
 interface Loopback103
  description Multicast RP-03
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.6.1 255.255.254.0
+ ip address 10.254.6.6 255.255.254.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 14141B180F0B
  ip ospf network point-to-point
@@ -2588,7 +2765,7 @@ interface Loopback103
 interface Loopback104
  description Multicast RP-04
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.8.1 255.255.255.0
+ ip address 10.254.8.6 255.255.255.0
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 1511021F0725
  ip ospf network point-to-point
@@ -2597,7 +2774,7 @@ interface Loopback104
 interface Loopback105
  description Multicast RP-05
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.10.1 255.255.255.240
+ ip address 10.254.10.6 255.255.255.224
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 121A0C041104
  ip ospf network point-to-point
@@ -2606,7 +2783,7 @@ interface Loopback105
 interface Loopback106
  description Multicast RP-06
  vrf forwarding VPN-UNDERLAY
- ip address 10.254.12.1 255.255.255.224
+ ip address 10.254.12.6 255.255.255.240
  ip pim sparse-mode
  ip ospf message-digest-key 1 md5 7 00071A150754
  ip ospf network point-to-point
@@ -2632,11 +2809,15 @@ interface GigabitEthernet0/1.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.138 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/1.4001
  description P2P link to rtr.core.vs.01
@@ -2644,11 +2825,15 @@ interface GigabitEthernet0/1.4001
  encapsulation dot1Q 4001
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.138 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 070C285F4D06
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 20
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  no ip address
@@ -2671,10 +2856,15 @@ interface GigabitEthernet0/3.4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.10 255.255.255.252
  ip access-group 100 in
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 05080F1C2243
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/4
  bandwidth 10000000
@@ -2689,10 +2879,15 @@ interface GigabitEthernet0/4.4
  encapsulation dot1Q 4
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.3.18 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 14141B180F0B
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/5
  bandwidth 10000000
@@ -2707,16 +2902,20 @@ interface GigabitEthernet0/5.4000
  encapsulation dot1Q 4000
  vrf forwarding VPN-UNDERLAY
  ip address 10.0.0.198 255.255.255.252
+ no ip redirects
  ip pim sparse-mode
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 01100F175804
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.0
- bfd interval 50 min_rx 50 multiplier 3
+ ip ospf cost 40
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1 vrf VPN-UNDERLAY
  router-id 10.254.0.6
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.0 authentication message-digest
  area 0.0.0.0 range 10.0.0.0 255.255.0.0
  area 0.0.0.33 authentication message-digest
@@ -2727,7 +2926,6 @@ router ospf 1 vrf VPN-UNDERLAY
  no passive-interface GigabitEthernet0/3.4
  no passive-interface GigabitEthernet0/4.4
  no passive-interface GigabitEthernet0/5.4000
- bfd all-interfaces
 !
 ip forward-protocol nd
 !
@@ -2744,32 +2942,32 @@ ip pim vrf VPN-UNDERLAY rp-address 10.254.12.14 acl-bidir-block#06 bidir
 !
 ip access-list standard acl-bidir-block#01
  remark BIDIR-BLOCK01-to-RP01
- permit 225.0.0.0 0.15.255.255
- permit 225.16.0.0 0.15.255.255
- permit 225.192.0.0 0.15.255.255
+ permit 225.0.0.0 0.11.255.255
+ permit 225.16.0.0 0.11.255.255
+ permit 225.192.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#02
- remark BIDIR-BLOCK01-to-RP02
- permit 225.32.0.0 0.15.255.255
- permit 225.48.0.0 0.15.255.255
- permit 225.208.0.0 0.15.255.255
+ remark BIDIR-BLOCK02-to-RP02
+ permit 225.32.0.0 0.11.255.255
+ permit 225.48.0.0 0.11.255.255
+ permit 225.208.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#03
- remark BIDIR-BLOCK01-to-RP03
- permit 225.64.0.0 0.15.255.255
- permit 225.80.0.0 0.15.255.255
- permit 225.224.0.0 0.15.255.255
+ remark BIDIR-BLOCK03-to-RP03
+ permit 225.64.0.0 0.11.255.255
+ permit 225.80.0.0 0.11.255.255
+ permit 225.224.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#04
- remark BIDIR-BLOCK01-to-RP04
- permit 225.96.0.0 0.15.255.255
- permit 225.112.0.0 0.15.255.255
- permit 225.240.0.0 0.15.255.255
+ remark BIDIR-BLOCK04-to-RP04
+ permit 225.96.0.0 0.11.255.255
+ permit 225.112.0.0 0.11.255.255
+ permit 225.240.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#05
- remark BIDIR-BLOCK01-to-RP04
- permit 225.128.0.0 0.15.255.255
- permit 225.144.0.0 0.15.255.255
+ remark BIDIR-BLOCK05-to-RP05
+ permit 225.128.0.0 0.11.255.255
+ permit 225.144.0.0 0.11.255.255
 ip access-list standard acl-bidir-block#06
- remark BIDIR-BLOCK01-to-RP04
- permit 225.160.0.0 0.15.255.255
- permit 225.176.0.0 0.15.255.255
+ remark BIDIR-BLOCK06-to-RP06
+ permit 225.160.0.0 0.11.255.255
+ permit 225.176.0.0 0.11.255.255
 !
 !
 !
@@ -2826,8 +3024,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:46:46 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:46:46 UTC Tue Jan 31 2017
+! Last configuration change at 18:48:58 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:48:58 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2918,9 +3116,30 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.vs.01
  encapsulation dot1Q 4
  ip address 10.0.3.5 255.255.255.252
+ no ip redirects
+ ip pim bfd
+ ip igmp join-group 225.240.0.1
+ ip igmp join-group 225.224.0.1
+ ip igmp join-group 225.208.0.1
+ ip igmp join-group 225.192.0.1
+ ip igmp join-group 225.176.0.1
+ ip igmp join-group 225.160.0.1
+ ip igmp join-group 225.144.0.1
+ ip igmp join-group 225.128.0.1
+ ip igmp join-group 225.112.0.1
+ ip igmp join-group 225.96.0.1
+ ip igmp join-group 225.80.0.1
+ ip igmp join-group 225.64.0.1
+ ip igmp join-group 225.48.0.1
+ ip igmp join-group 225.32.0.1
+ ip igmp join-group 225.16.0.1
+ ip igmp join-group 225.0.0.1
  ip ospf message-digest-key 1 md5 7 094F471A1A0A
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -2933,14 +3152,19 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.vs.02
  encapsulation dot1Q 4
  ip address 10.0.3.9 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 110A1016141D
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.205
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.33 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
@@ -3002,8 +3226,8 @@ end</entry>
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 22:47:08 UTC Tue Jan 31 2017
-! NVRAM config last updated at 22:47:08 UTC Tue Jan 31 2017
+! Last configuration change at 18:56:27 UTC Thu Feb 2 2017
+! NVRAM config last updated at 18:56:28 UTC Thu Feb 2 2017
 !
 version 15.6
 service timestamps debug datetime msec
@@ -3094,9 +3318,14 @@ interface GigabitEthernet0/1.4
  description P2P link to rtr.core.vs.01
  encapsulation dot1Q 4
  ip address 10.0.3.13 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 060506324F41
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
+ bfd interval 100 min_rx 100 multiplier 3
 !
 interface GigabitEthernet0/2
  bandwidth 10000000
@@ -3109,15 +3338,20 @@ interface GigabitEthernet0/2.4
  description P2P link to rtr.core.vs.02
  encapsulation dot1Q 4
  ip address 10.0.3.17 255.255.255.252
+ no ip redirects
+ ip pim bfd
  ip ospf message-digest-key 1 md5 7 104D000A0618
  ip ospf network point-to-point
+ ip ospf bfd
  ip ospf 1 area 0.0.0.33
+ ip ospf cost 4
  shutdown
+ bfd interval 100 min_rx 100 multiplier 3
 !
 router ospf 1
  router-id 10.254.0.206
  log-adjacency-changes detail
- auto-cost reference-bandwidth 100000
+ auto-cost reference-bandwidth 400000
  area 0.0.0.33 authentication message-digest
  passive-interface default
  no passive-interface GigabitEthernet0/1.4
